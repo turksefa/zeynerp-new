@@ -1,0 +1,166 @@
+@model RegisterViewModel
+@{
+    Layout = "~/Views/Account/_Layout.cshtml";
+    ViewData["Title"] = "Register Page";
+}
+
+<div class="panel card-sign">
+    <div class="card-body">
+        <form id="form" asp-action="Register" method="post">
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating">
+                        <input asp-for="FullName" type="text" class="form-control" id="floatingInputGroupName"
+                            placeholder="Ad Soyad" required>
+                        <label for="floatingInputGroupName">Ad Soyad</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating">
+                        <input asp-for="CompanyName" type="text" class="form-control" id="floatingInputGroupCompanyName"
+                            placeholder="Şirket Adı" required>
+                        <label for="floatingInputGroupCompanyName">Şirket Adı</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating">
+                        <input asp-for="Email" type="email" class="form-control" id="floatingInputGroupEmail"
+                            placeholder="E-Posta" required>
+                        <label for="floatingInputGroupEmail">E-Posta</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating">
+                        <input asp-for="Password" type="password" class="form-control" id="floatingInputGroupPassword"
+                            placeholder="Şifre" required>
+                        <label for="floatingInputGroupPassword">Şifre</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="checkbox-custom checkbox-default">
+                        <input id="AgreeTerms" name="agreeterms" type="checkbox" required />
+                        <label for="AgreeTerms"><a href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalBootstrap">Kullanım koşullarını</a> kabul ediyorum.</label>
+                    </div>
+
+                    <div class="modal" id="modalBootstrap" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum
+                                        iaculis
+                                        maximus. Suspendisse sagittis scelerisque lacus at bibendum. Etiam eu ante
+                                        egestas, gravida odio ultricies, iaculis tellus. Integer elementum interdum
+                                        felis, id tincidunt enim sodales vitae. Nullam pellentesque sagittis
+                                        interdum.
+                                        Morbi in eleifend dui. Donec quis fermentum urna, tempor efficitur magna.
+                                        Aenean
+                                        in quam suscipit dolor congue aliquam. In risus est, volutpat quis quam sit
+                                        amet, porttitor rutrum ex. Nulla sit amet vestibulum quam. Vivamus pharetra
+                                        mattis suscipit. Etiam vehicula elit at vehicula dictum. Curabitur vitae
+                                        nunc ac
+                                        nisi placerat lacinia.
+                                    </p>
+                                    <p>
+                                        Nam vitae velit non sem maximus tempor. Etiam interdum nulla eu tortor
+                                        pharetra
+                                        ornare. Praesent mattis erat est, nec dapibus felis hendrerit id. Mauris in
+                                        purus lacinia, egestas arcu at, ultrices ante. Integer efficitur elementum
+                                        arcu
+                                        ac finibus. Vivamus a congue ex. Praesent vulputate eget lorem nec
+                                        vulputate.
+                                        Aenean sagittis, elit quis pulvinar dignissim, orci elit vehicula lorem,
+                                        fringilla malesuada nulla lacus non est.
+                                    </p>
+                                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Kabul
+                                        Ediyorum</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-end">
+                    <button type="submit" class="btn btn-primary mt-2">Kabul Et</button>
+                </div>
+            </div>
+
+            <span class="mt-3 mb-3 line-thru text-center text-uppercase">
+                <span>VEYA</span>
+            </span>
+
+            <div class="mb-1 text-center">
+                <a class="btn btn-outline-dark border-dark-subtle mb-3 ms-1 me-1 w-100 rounded-5" href="#">
+                    <svg version="1.1" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <g>
+                            <path fill="#EA4335"
+                                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                            </path>
+                            <path fill="#4285F4"
+                                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                            </path>
+                            <path fill="#FBBC05"
+                                d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                            </path>
+                            <path fill="#34A853"
+                                d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                            </path>
+                            <path fill="none" d="M0 0h48v48H0z"></path>
+                        </g>
+                    </svg>
+                    Google ile devam et</a>
+            </div>
+
+            <div class="mb-1 text-center">
+                <a class="btn btn-outline-dark border-dark-subtle mb-3 ms-1 me-1 w-100 rounded-5" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48">
+                        <path fill="#ff5722" d="M6 6H22V22H6z" transform="rotate(-180 14 14)">
+                        </path>
+                        <path fill="#4caf50" d="M26 6H42V22H26z" transform="rotate(-180 34 14)">
+                        </path>
+                        <path fill="#ffc107" d="M26 26H42V42H26z" transform="rotate(-180 34 34)"></path>
+                        <path fill="#03a9f4" d="M6 26H22V42H6z" transform="rotate(-180 14 34)">
+                        </path>
+                    </svg>
+                    Microsoft ile devam et</a>
+            </div>
+
+            <p class="text-center">Zaten bir hesabınız var mı? <a asp-action="Login">Oturum Aç</a></p>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var errorMessages = @Html.Raw(Json.Serialize(ViewData.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList()));
+        if (errorMessages.length > 0) {
+            var notice = new PNotify({
+                text: errorMessages.join('<br>'),
+                type: 'error',
+                addclass: 'click-2-close',
+                hide: true,
+                buttons: {
+                    closer: false,
+                    sticker: false
+                }
+            });
+
+            notice.get().click(function () {
+                notice.remove();
+            });
+        }        
+    </script>
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeynERP | Bulut Tabanlı ERP Yazılımı | Tedarik, Stok, Personel ve Muhasebe Yönetimi</title>
+    <meta name="description"
+        content="ZeynERP ile tedarik, stok, personel ve muhasebe süreçlerinizi tek platformda yönetin. Bulut tabanlı, güvenli ve kullanıcı dostu ERP yazılımı ile işinizi dijitalleştirin.">
+    <meta name="keywords"
+        content="ERP, ZeynERP, Bulut ERP, Tedarik Yönetimi, Stok Yönetimi, Personel Yönetimi, Muhasebe, Dijital Dönüşüm, Kurumsal Yazılım, İş Yönetimi, Türkiye ERP">
+    <meta name="author" content="ZeynERP">
+    <link rel="canonical" href="https://zeynerp.com/">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeynerp.com/">
+    <meta property="og:title" content="ZeynERP | Bulut Tabanlı ERP Yazılımı">
+    <meta property="og:description"
+        content="Tedarik, stok, personel ve muhasebe süreçlerinizi ZeynERP ile kolayca yönetin.">
+    @* <meta property="og:image" content="https://zeynerp.com/images/logo.png"> *@
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zeynerp.com/">
+    <meta name="twitter:title" content="ZeynERP | Bulut Tabanlı ERP Yazılımı">
+    <meta name="twitter:description"
+        content="Tedarik, stok, personel ve muhasebe süreçlerinizi ZeynERP ile kolayca yönetin.">
+    @* <meta name="twitter:image" content="https://zeynerp.com/images/logo.png"> *@
+
+    @* <link rel="icon" type="image/png" href="images/icon.png"> *@
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/home/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl fixed-top py-3 navbar-transparent transition-300">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="~/img/home/logo.png" alt="ZeynERP Logo" width="190" height="40" class="img-fluid">
+            </a>
+            <button class="navbar-toggler bg-light border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect" href="#anasayfa">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect" href="#erpnedir">ERP Nedir?</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect" href="#moduller">Modüller</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect" href="#referanslar">Referanslar</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect"
+                            href="#kullanicihikayeleri">Kullanıcı
+                            Hikayeleri</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-semibold text-white nav-hover-effect" href="support.html">İletişim</a>
+                    </li>
+                </ul>
+                <div class="d-none d-xl-flex">
+                    <a href="#" class="btn btn-outline-light rounded-pill me-2 px-4 fw-medium">Teklif Alın</a>
+                    <a asp-action="Login" asp-controller="Account"
+                        class="btn btn-primary rounded-pill px-4 fw-medium text-white">Giriş Yap</a>
+                </div>
+
+                <div class="d-xl-none d-flex w-100 mt-3">
+                    <a href="#" class="btn btn-outline-light rounded-pill me-2 w-50 fw-medium mb-2">Teklif Alın</a>
+                    <a asp-action="Login" asp-controller="Account"
+                        class="btn btn-primary rounded-pill w-50 fw-medium text-white mb-2">Giriş Yap</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <a href="#anasayfa" id="scroll-to-top" class="scroll-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <button id="chatbot-btn" class="chatbot-btn">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <div id="chatbot-panel" class="d-none flex-column shadow-lg border-0 bg-white rounded-4 chatbot-animate"
+        style="position:fixed;bottom:90px;right:25px;width:350px;max-width:95vw;z-index:100;min-height:420px;max-height:70vh;">
+        <div class="d-flex align-items-center justify-content-between bg-primary text-white px-3 py-2 rounded-top-4">
+            <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-robot"></i>
+                <span class="fw-semibold">ZeynERP Chatbot</span>
+            </div>
+            <button type="button" id="chatbot-close" class="btn btn-sm btn-close btn-close-white ms-2"
+                aria-label="Kapat"></button>
+        </div>
+        <div class="flex-grow-1 overflow-auto px-3 py-2" id="chatbot-messages" style="background:#f8fafd;">
+            <div class="d-flex mb-2">
+                <div class="bg-light border rounded-3 px-3 py-2 text-dark">
+                    Merhaba 👋<br>Size nasıl yardımcı olabilirim?
+                </div>
+            </div>
+        </div>
+        <div class="p-3 border-top bg-light rounded-bottom-4">
+            <form id="chatbot-form" class="d-flex gap-2 align-items-center">
+                <input type="text" id="chatbot-input" class="form-control rounded-pill"
+                    placeholder="Mesajınızı yazın..." autocomplete="off">
+                <button type="submit"
+                    class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
+                    style="width:40px;height:40px;">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5">
+        <div id="iletisim" class="container">
+            <div class="row">
+                <div class="col-md-4 text-center mb-4" data-animation="animate__fadeInUp" data-delay="100">
+                    <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-phone-volume fa-2x text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">(+90) 226 353 33 30</h5>
+                </div>
+                <div class="col-md-4 text-center mb-4" data-animation="animate__fadeInUp" data-delay="200">
+                    <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-envelope fa-2x text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">info@zeynerp.com</h5>
+                </div>
+                <div class="col-md-4 text-center mb-4" data-animation="animate__fadeInUp" data-delay="300">
+                    <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-location-dot fa-2x text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Taşköprü Merkez Mah. Malazgirt Cad. No:3/A, Çiftlikköy / Yalova</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-md-0 mb-4 text-center text-md-start" data-animation="animate__fadeInUp"
+                    data-delay="400">
+                    <h2 class="footer-heading">Ürünler</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="tedarik.html" class="d-block text-decoration-none footer-link-hover">Tedarik
+                                Yönetimi</a></li>
+                        <li><a href="personel.html" class="d-block text-decoration-none footer-link-hover">Personel
+                                Yönetimi</a>
+                        </li>
+                        <li><a href="stok.html" class="d-block text-decoration-none footer-link-hover">Stok Yönetimi</a>
+                        </li>
+                        <li><a href="muhasebe.html" class="d-block text-decoration-none footer-link-hover">Muhasebe</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-md-0 mb-4 text-center text-md-start" data-animation="animate__fadeInUp"
+                    data-delay="500">
+                    <h2 class="footer-heading">ZeynERP</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="kariyer.html" class="d-block text-decoration-none footer-link-hover">Kariyer</a>
+                        </li>
+                        <li><a href="blog.html" class="d-block text-decoration-none footer-link-hover">Blog</a></li>
+                        <li><a asp-action="about" class="d-block text-decoration-none footer-link-hover">Hakkımızda</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-md-0 mb-4 text-center text-md-start" data-animation="animate__fadeInUp"
+                    data-delay="600">
+                    <h2 class="footer-heading">Kaynaklar</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="faq.html" class="d-block text-decoration-none footer-link-hover">Sıkça Sorulan
+                                Sorular</a></li>
+                        <li><a href="support.html" class="d-block text-decoration-none footer-link-hover">Destek</a>
+                        </li>
+                        <li><a href="privacypolicy.html" class="d-block text-decoration-none footer-link-hover">Gizlilik
+                                Politikası</a></li>
+                        <li><a href="cookiepolicy.html" class="d-block text-decoration-none footer-link-hover">Çerez
+                                Politikası</a>
+                        </li>
+                        <li><a href="kullanimkosullari.html"
+                                class="d-block text-decoration-none footer-link-hover">Kullanım
+                                Koşulları</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-md-0 mb-4 text-center" data-animation="animate__fadeInUp" data-delay="700">
+                    <h2 class="footer-heading text-center">Bizi Takip Edin</h2>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a class="btn btn-outline-light rounded-circle d-flex justify-content-center align-items-center"
+                            href="#" role="button" style="height: 50px; width: 50px;">
+                            <i class="fa-brands fa-square-x-twitter fa-xl"></i>
+                        </a>
+                        <a class="btn btn-outline-light rounded-circle d-flex justify-content-center align-items-center"
+                            href="#" role="button" style="height: 50px; width: 50px;">
+                            <i class="fa-brands fa-square-instagram fa-xl"></i>
+                        </a>
+                        <a class="btn btn-outline-light rounded-circle d-flex justify-content-center align-items-center"
+                            href="https://tr.linkedin.com/company/zeynerp" role="button"
+                            style="height: 50px; width: 50px;">
+                            <i class="fa-brands fa-linkedin fa-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center p-3">
+                © 2025 Tüm Hakları Saklıdır:
+                <span>ZeynERP.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const updateNavbar = () => {
+                const navbar = document.querySelector('.navbar');
+                const teklifBtn = document.querySelector('.navbar .btn-outline-light, .navbar .btn-outline-dark');
+                const logo = document.querySelector('.navbar-brand img');
+
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('navbar-transparent');
+                    navbar.classList.add('navbar-scrolled');
+                    if (teklifBtn && teklifBtn.classList.contains('btn-outline-light')) {
+                        teklifBtn.classList.remove('btn-outline-light');
+                        teklifBtn.classList.add('btn-outline-dark');
+                    }
+                    if (logo) {
+                        logo.style.filter = '';
+                    }
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.classList.add('navbar-transparent');
+                    if (teklifBtn && teklifBtn.classList.contains('btn-outline-dark')) {
+                        teklifBtn.classList.remove('btn-outline-dark');
+                        teklifBtn.classList.add('btn-outline-light');
+                    }
+                    if (logo) {
+                        logo.style.filter = 'brightness(100)';
+                    }
+                }
+            };
+
+            updateNavbar();
+
+            window.addEventListener('scroll', updateNavbar);
+
+            @* let touchStartX = 0; *@
+                @* carousel.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, false);
+            carousel.addEventListener('touchend', e => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 50;
+
+                if (touchEndX < touchStartX - swipeThreshold) carouselInstance.next(); if (touchEndX > touchStartX +
+                    swipeThreshold) carouselInstance.prev();
+            }, false); *@
+
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', e => {
+                        e.preventDefault();
+                        const targetId = anchor.getAttribute('href');
+                        if (targetId === "#") return;
+
+                        const targetElement = document.querySelector(targetId);
+                        if (!targetElement) return;
+
+                        const navbar = document.querySelector('.navbar');
+                        const navbarHeight = navbar.offsetHeight;
+                        const windowHeight = window.innerHeight;
+                        const elementHeight = targetElement.offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+                        const scrollPosition = elementHeight > windowHeight - navbarHeight
+                            ? elementPosition - navbarHeight
+                            : elementPosition - (windowHeight - elementHeight) / 2 - navbarHeight / 2;
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+
+            const animateOnScroll = () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (entry.target.classList.contains('animate-when-visible')) {
+                                entry.target.classList.add('is-visible');
+
+                                const animationClass = entry.target.dataset.animation;
+                                const animationDelay = entry.target.dataset.delay;
+
+                                if (animationClass) {
+                                    if (animationDelay) {
+                                        entry.target.style.animationDelay = `${animationDelay}ms`;
+                                    }
+                                    entry.target.classList.add('animate__animated', animationClass);
+                                }
+                            }
+
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.animate-when-visible').forEach(el => {
+                    observer.observe(el);
+                });
+            };
+
+            animateOnScroll();
+
+            const navbarCollapse = document.getElementById('navbarSupportedContent');
+            const navbar = document.querySelector('.navbar');
+            if (navbarCollapse) {
+                navbarCollapse.addEventListener('show.bs.collapse', function () {
+                    navbarCollapse.classList.add('show');
+                });
+                navbarCollapse.addEventListener('hide.bs.collapse', function () {
+                    navbarCollapse.classList.remove('show');
+                });
+            }
+
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.getElementById('anasayfa');
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+
+            const chatbotBtn = document.getElementById('chatbot-btn');
+            const chatbotPanel = document.getElementById('chatbot-panel');
+            const chatbotClose = document.getElementById('chatbot-close');
+            if (chatbotBtn && chatbotPanel && chatbotClose) {
+                chatbotPanel.classList.add('d-none');
+                chatbotBtn.addEventListener('click', function () {
+                    chatbotPanel.classList.remove('d-none', 'fadeOutDown');
+                    chatbotPanel.classList.add('d-flex', 'fadeInUp');
+                });
+                chatbotClose.addEventListener('click', function () {
+                    chatbotPanel.classList.remove('fadeInUp');
+                    chatbotPanel.classList.add('fadeOutDown');
+                    chatbotPanel.addEventListener('animationend', function handler() {
+                        chatbotPanel.classList.remove('d-flex', 'fadeOutDown');
+                        chatbotPanel.classList.add('d-none');
+                        chatbotPanel.removeEventListener('animationend', handler);
+                    });
+                });
+            }
+
+            const chatbotForm = document.getElementById('chatbot-form');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            if (chatbotForm && chatbotInput && chatbotMessages) {
+                chatbotForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const msg = chatbotInput.value.trim();
+                    if (!msg) return;
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'd-flex justify-content-end mb-2';
+                    userMsg.innerHTML = `<div class="bg-primary text-white rounded-3 px-3 py-2">${msg}</div>`;
+                    chatbotMessages.appendChild(userMsg);
+                    chatbotInput.value = '';
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    setTimeout(() => {
+                        const botMsg = document.createElement('div');
+                        botMsg.className = 'd-flex mb-2';
+                        botMsg.innerHTML = `<div class="bg-light border rounded-3 px-3 py-2 text-dark">Bu sadece bir demo arayüzüdür.</div>`;
+                        chatbotMessages.appendChild(botMsg);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    }, 700);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

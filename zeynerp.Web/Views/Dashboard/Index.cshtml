@@ -1,0 +1,12 @@
+@model IEnumerable<Product>
+
+<header class="page-header">
+
+</header>
+
+<ul>
+    @foreach(var product in Model)
+    {
+        <li>@product.Name</li>
+    }
+</ul>

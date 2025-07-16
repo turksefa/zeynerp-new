@@ -1,0 +1,17 @@
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Infrastructure.deps.json
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Infrastructure.dll
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Infrastructure.pdb
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Application.dll
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Domain.dll
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Application.pdb
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\bin\Debug\net8.0\zeynerp.Domain.pdb
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.AssemblyInfo.cs
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp..066B5F9F.Up2Date
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.dll
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\refint\zeynerp.Infrastructure.dll
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.pdb
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\ref\zeynerp.Infrastructure.dll

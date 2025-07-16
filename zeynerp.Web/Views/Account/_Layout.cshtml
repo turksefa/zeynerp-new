@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="fixed">
+
+<head>
+
+	<!-- Basic -->
+	<meta charset="UTF-8">
+
+	<meta name="keywords" content="HTML5 Admin Template" />
+	<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+	<meta name="author" content="okler.net">
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!-- Web Fonts  -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800|Shadows+Into+Light"
+		rel="stylesheet" type="text/css">
+
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/vendor/animate/animate.compat.css">
+	<link rel="stylesheet" href="~/vendor/font-awesome/css/all.min.css" />
+	<link rel="stylesheet" href="~/vendor/boxicons/css/boxicons.min.css" />
+	<link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.css" />
+	<link rel="stylesheet" href="~/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+	<link rel="stylesheet" href="~/vendor/pnotify/pnotify.custom.css" />
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="~/css/theme.css" />
+
+	<!-- Skin CSS -->
+	<link rel="stylesheet" href="~/css/skins/default.css" />
+
+	<!-- Theme Custom CSS -->
+	<link rel="stylesheet" href="~/css/custom.css">
+
+	<!-- Head Libs -->
+	<script src="~/vendor/modernizr/modernizr.js"></script>
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-7 d-none d-lg-block p-0">
+				<div id="carouselExample" class="carousel slide h-100">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+							class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+							aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+							aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner h-100">
+						<div class="carousel-item active h-100 bg-dark">
+							<div class="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
+								<h5 class="fs-1 text-muted">First slide label</h5>
+								<p class="fs-6 text-muted">Some representative placeholder content for the first slide.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-5 bg-white">
+				<!-- start: page -->
+				<section class="body-sign">
+					<div class="center-sign position-relative">
+						@RenderBody()
+						<p class="text-center text-muted position-absolute bottom-0 w-100">&copy; Zeynerp 2025.</p>
+					</div>
+				</section>
+				<!-- end: page -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Vendor -->
+	<script src="~/vendor/jquery/jquery.js"></script>
+	<script src="~/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+	<script src="~/vendor/popper/umd/popper.min.js"></script>
+	<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="~/vendor/common/common.js"></script>
+	<script src="~/vendor/nanoscroller/nanoscroller.js"></script>
+	<script src="~/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+	<script src="~/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+	<!-- Specific Page Vendor -->
+	<script src="~/vendor/pnotify/pnotify.custom.js"></script>
+	<script src="~/vendor/jquery-validation/jquery.validate.js"></script>
+	<script src="~/vendor/jquery-validation/localization/messages_tr.min.js"></script>
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="~/js/theme.js"></script>
+
+	<!-- Theme Custom -->
+	<script src="~/js/custom.js"></script>
+
+	<!-- Theme Initialization Files -->
+	<script src="~/js/theme.init.js"></script>
+
+	<script src="~/js/examples/examples.validation.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
