@@ -10,6 +10,7 @@ C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.AssemblyInfo.cs
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.sourcelink.json
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp..066B5F9F.Up2Date
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\zeynerp.Infrastructure.dll
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Infrastructure\obj\Debug\net8.0\refint\zeynerp.Infrastructure.dll

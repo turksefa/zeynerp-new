@@ -31,6 +31,13 @@ namespace zeynerp.Infrastructure.Data.Repositories
             return entity;
         }
 
+        public async Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+            await _tenantDbContext.SaveChangesAsync();
+            return entities;
+        }
+
         public virtual async Task<T> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
@@ -46,6 +53,6 @@ namespace zeynerp.Infrastructure.Data.Repositories
             _dbSet.Remove(entity);
             await _tenantDbContext.SaveChangesAsync();
             return true;
-        }
+        }        
     }
 }

@@ -22,10 +22,123 @@ namespace zeynerp.Infrastructure.Data.Migrations.Tenant
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("zeynerp.Domain.Entities.Products.Product", b =>
+            modelBuilder.Entity("CariTanimCariTurTanim", b =>
+                {
+                    b.Property<Guid>("CariTanimlarId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CariTurTanimlarId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CariTanimlarId", "CariTurTanimlarId");
+
+                    b.HasIndex("CariTurTanimlarId");
+
+                    b.ToTable("CariTanimCariTurTanim");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTanim", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Adi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Durum")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EPosta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FaturaAdresi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fax")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KisaAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VergiDairesi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VergiNumarasi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CariTanimlar");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTurTanim", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CariTurTanimAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Durum")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sira")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CariTurTanimlar");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariYetkiliTanim", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AdiSoyadi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CariTanimId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
@@ -34,7 +147,14 @@ namespace zeynerp.Infrastructure.Data.Migrations.Tenant
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("EPosta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fax")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -46,15 +166,132 @@ namespace zeynerp.Infrastructure.Data.Migrations.Tenant
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.HasIndex("CariTanimId");
+
+                    b.ToTable("CariYetkiliTanimlar");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.TeslimatAdresTanim", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Adres")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Baslik")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CariTanimId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CariTanimId");
+
+                    b.ToTable("TeslimatAdresTanimlar");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.StokTanimlamalar.StokGrupTanim", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Durum")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sira")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StokTanimAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StokGrupTanimlar");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("02e861a6-0cf4-43dd-82be-5638bdbdf6d6"),
-                            CreatedDate = new DateTime(2025, 7, 16, 13, 36, 40, 260, DateTimeKind.Local).AddTicks(3340),
-                            Name = "iPhone"
+                            Id = new Guid("96c0f08c-b553-4333-9e74-5c38ab87bade"),
+                            CreatedDate = new DateTime(2025, 7, 18, 14, 56, 49, 916, DateTimeKind.Local).AddTicks(1647),
+                            Durum = 1,
+                            Sira = 1,
+                            StokTanimAdi = "Yok"
                         });
+                });
+
+            modelBuilder.Entity("CariTanimCariTurTanim", b =>
+                {
+                    b.HasOne("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTanim", null)
+                        .WithMany()
+                        .HasForeignKey("CariTanimlarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTurTanim", null)
+                        .WithMany()
+                        .HasForeignKey("CariTurTanimlarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariYetkiliTanim", b =>
+                {
+                    b.HasOne("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTanim", "CariTanim")
+                        .WithMany("CariYetkiliTanimlar")
+                        .HasForeignKey("CariTanimId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CariTanim");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.TeslimatAdresTanim", b =>
+                {
+                    b.HasOne("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTanim", "CariTanim")
+                        .WithMany("TeslimatAdresTanimlar")
+                        .HasForeignKey("CariTanimId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CariTanim");
+                });
+
+            modelBuilder.Entity("zeynerp.Domain.Entities.Tanimlamalar.MuhasebeTanimlamalar.CariTanim", b =>
+                {
+                    b.Navigation("CariYetkiliTanimlar");
+
+                    b.Navigation("TeslimatAdresTanimlar");
                 });
 #pragma warning restore 612, 618
         }

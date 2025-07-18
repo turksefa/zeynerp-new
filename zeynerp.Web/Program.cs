@@ -1,14 +1,19 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using zeynerp.Application.Common.Interfaces;
-using zeynerp.Application.Services.Identity;
-using zeynerp.Application.Services.Products;
+using zeynerp.Application.Mapper;
+using zeynerp.Application.Services.Tanimlamalar.MuhasebeTanimlamalar;
+using zeynerp.Application.Services.Tanimlamalar.StokTanimlamalar;
 using zeynerp.Domain.Entities.Identity;
 using zeynerp.Domain.Repositories;
+using zeynerp.Domain.Repositories.Tanimlamalar.MuhasebeTanimlamalar;
+using zeynerp.Domain.Repositories.Tanimlamalar.StokTanimlamalar;
 using zeynerp.Infrastructure.Data.Contexts;
 using zeynerp.Infrastructure.Data.Repositories;
-using zeynerp.Infrastructure.Data.Repositories.Products;
-using zeynerp.Infrastructure.Services.Identity;
+using zeynerp.Infrastructure.Data.Repositories.Tanimlamalar.MuhasebeTanimlamalar;
+using zeynerp.Infrastructure.Data.Repositories.Tanimlamalar.StokTanimlamalar;
+using zeynerp.Infrastructure.Services.Authentication;
+using zeynerp.Infrastructure.Services.Email;
 using zeynerp.Infrastructure.Services.MultiTenancy;
 using zeynerp.Web.Mapper;
 
@@ -44,12 +49,26 @@ builder.Services.AddScoped<TenantDbContext>(serviceProvider =>
 });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
 
 builder.Services.AddScoped<ITenantService, TenantService>();
-builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+builder.Services.AddScoped<IStokGrupTanimRepository, StokGrupTanimRepository>();
+builder.Services.AddScoped<IStokGrupTanimService, StokGrupTanimService>();
+
+builder.Services.AddScoped<ICariTanimRepository, CariTanimRepository>();
+builder.Services.AddScoped<ICariTanimService, CariTanimService>();
+
+builder.Services.AddScoped<ICariTurTanimRepository, CariTurTanimRepository>();
+builder.Services.AddScoped<ICariTurTanimService, CariTurTanimService>();
+
+
+builder.Services.AddScoped<ICariYetkiliTanimRepository, CariYetkiliTanimRepository>();
+
+builder.Services.AddScoped<ITeslimatAdresTanimRepository, TeslimatAdresTanimRepository>();
 
 builder.Services.AddAuthentication().AddGoogle(options =>
     {

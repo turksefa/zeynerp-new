@@ -4,27 +4,26 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using zeynerp.Application.Common.Interfaces;
 using zeynerp.Application.DTOs.Authentication;
-using zeynerp.Application.Services.Identity;
 using zeynerp.Domain.Entities.Identity;
-using zeynerp.Web.Models.Identity;
+using zeynerp.Web.Models.Authentication;
 
 namespace zeynerp.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IIdentityService _identityService;
+        private readonly IAuthenticationService _authenticationService;
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITenantService _tenantService;
 
-        public AccountController(IIdentityService identityService,
+        public AccountController(IAuthenticationService authenticationService,
             IMapper mapper,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ITenantService tenantService)
         {
-            _identityService = identityService;
+            _authenticationService = authenticationService;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,7 +41,7 @@ namespace zeynerp.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var result = await _identityService.RegisterAsync(_mapper.Map<RegisterDto>(model));
+            var result = await _authenticationService.RegisterAsync(_mapper.Map<RegisterDto>(model));
             if (result.IsSuccess)
                 return RedirectToAction("Login");
 
@@ -54,6 +53,23 @@ namespace zeynerp.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token)){}
+                // error
+
+            var result = await _authenticationService.ConfirmEmailAsync(userId, token);
+            if (result.IsSuccess)
+                return RedirectToAction("Login");
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error);
+            }
+
+            return View(result.Errors);
+        }
+        
         public IActionResult Login([FromQuery] string? returnUrl)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -67,7 +83,7 @@ namespace zeynerp.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var result = await _identityService.LoginAsync(_mapper.Map<LoginDto>(model));
+            var result = await _authenticationService.LoginAsync(_mapper.Map<LoginDto>(model));
             if (result.IsSuccess)
                 return Redirect(returnUrl);
 
@@ -78,9 +94,14 @@ namespace zeynerp.Web.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await _identityService.LogoutAsync();
+            await _authenticationService.LogoutAsync();
             return RedirectToAction("Login");
         }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }        
 
         [HttpPost]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)

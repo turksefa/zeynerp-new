@@ -8,6 +8,7 @@ C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.App
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.Application.AssemblyInfoInputs.cache
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.Application.AssemblyInfo.cs
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.Application.csproj.CoreCompileInputs.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.Application.sourcelink.json
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp..6E741A68.Up2Date
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\zeynerp.Application.dll
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Application\obj\Debug\net8.0\refint\zeynerp.Application.dll

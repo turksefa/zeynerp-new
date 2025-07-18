@@ -6,6 +6,7 @@ C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.G
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.AssemblyInfoInputs.cache
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.AssemblyInfo.cs
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.sourcelink.json
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.dll
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\refint\zeynerp.Domain.dll
 C:\Users\IT\Desktop\zeynerp-new\zeynerp.Domain\obj\Debug\net8.0\zeynerp.Domain.pdb
