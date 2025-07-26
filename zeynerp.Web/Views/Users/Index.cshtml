@@ -1,0 +1,225 @@
+@model InvitationViewModel
+@{
+    ViewData["LayoutTitle"] = "Kullanıcılar";
+}
+
+<header class="page-header">
+    <h2>@ViewData["LayoutTitle"]</h2>
+</header>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-modern">
+            <div class="card-body">
+                <div class="datatables-header-footer-wrapper">
+                    <div class="datatable-header">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                                <a href="#modalForm"
+                                    class="modal-with-form btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+
+                                    Kullanıcı
+                                    Davet</a>
+                                <div id="modalForm" class="modal-block modal-block-primary modal-block-sm mfp-hide">
+                                    <section class="card">
+                                        <form id="form" asp-controller="Invitations" asp-action="Create" method="post">
+                                            <header class="card-header">
+                                                <h2 class="card-title">Kullanıcı Davet</h2>
+                                            </header>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="form-floating">
+                                                            <input type="email" class="form-control form-control-md"
+                                                                id="floatingInputGroupEmail" asp-for="Email" placeholder="E-Posta"
+                                                                required>
+                                                            <label for="floatingInputGroupEmail">E-Posta</label>
+                                                        </div>
+                                                        <span class="input-group-text"><i
+                                                                class="bx bx-envelope text-4"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-end">
+                                                        <button type="submit" class="btn btn-primary">Gönder</button>
+                                                        <button class="btn btn-default modal-dismiss">İptal</button>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="col-8 col-lg-auto ms-auto ml-auto mb-3 mb-lg-0">
+                                <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+                                    <select class="form-control select-style-1 results-per-page"
+                                        name="results-per-page">
+                                        <option value="12" selected>12</option>
+                                        <option value="24">24</option>
+                                        <option value="36">36</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4 col-lg-auto ps-lg-1 mb-3 mb-lg-0">
+                                <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+                                    <select class="form-control select-style-1 filter-by" name="filter-by">
+                                        <option value="all" selected>Tümü</option>
+                                        <option value="1">ID</option>
+                                        <option value="2">Name</option>
+                                        <option value="3">Phone</option>
+                                        <option value="4">E-mail</option>
+                                        <option value="5">Orders</option>
+                                        <option value="6">Total Amount</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-auto ps-lg-1">
+                                <div class="search search-style-1 search-style-1-lg mx-lg-auto">
+                                    <div class="input-group">
+                                        <input type="text" class="search-term form-control" name="search-term"
+                                            id="search-term" placeholder="Kullanıcı Ara...">
+                                        <button class="btn btn-default" type="submit"><i
+                                                class="bx bx-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-list">
+
+                        <thead>
+                            <tr>
+                                <th width="25%">Kullanıcı</th>
+                                <th width="25%">E-Posta</th>
+                                <th width="60%">Yetkiler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* @foreach (var user in Model.Users)
+                            {
+                                <tr>
+                                    <td><a href="#"><strong>@user.FullName</strong></a></td>
+                                    <td>@user.Email</td>
+                                    <td class="d-flex justify-content-between">
+                                        <p class="m-0"><span class="badge text-bg-primary me-1">Stok Yönetimi</span><span
+                                                class="badge text-bg-danger">Tedarik Yönetimi</span></p>
+                                        <span class="ecommerce-status completed"></span>
+                                    </td>
+                                </tr>
+                            }
+                            @foreach (var invitationDto in Model.InvitationDtos)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>@invitationDto.Email</td>
+                                    <td class="d-flex justify-content-between">
+                                        <p class="m-0"><span class="badge text-bg-primary me-1">Stok Yönetimi</span><span
+                                                class="badge text-bg-danger">Tedarik Yönetimi</span></p>
+                                        <span class="ecommerce-status on-hold"></span>
+                                    </td>
+                                </tr>
+                            } *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section VendorStyles {
+    <link rel="stylesheet" href="~/vendor/datatables/media/css/dataTables.bootstrap5.css" />
+}
+
+@section VendorScripts {
+    <script src="~/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/media/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/vendor/jquery-validation/jquery.validate.js"></script>
+    <script src="~/vendor/jquery-validation/localization/messages_tr.min.js"></script>
+}
+
+@section Scripts {
+    <script src="~/js/examples/examples.modals.js"></script>
+    <script src="~/js/examples/examples.validation.js"></script>
+
+    <script>
+        (function ($) {
+
+            'use strict';
+
+            var listDataTableInit = function () {
+
+                var $listTable = $('#datatable-list');
+
+                $listTable.dataTable({
+                    dom: '<"row justify-content-between"<"col-auto"><"col-auto">><"table-responsive"t>',
+                    pageLength: 12,
+                    order: [],
+                    language: {
+                        emptyTable: "Tabloda gösterilecek veri bulunmamaktadır.",
+                        paginate: {
+                            previous: '<i class="fas fa-chevron-left"></i>',
+                            next: '<i class="fas fa-chevron-right"></i>'
+                        }
+                    },
+                    drawCallback: function () {
+
+                        $listTable
+                            .closest('.dataTables_wrapper')
+                            .find('.dataTables_info')
+                            .appendTo($listTable.closest('.datatables-header-footer-wrapper').find('.results-info-wrapper'));
+
+                        $listTable
+                            .closest('.dataTables_wrapper')
+                            .find('.dataTables_paginate')
+                            .appendTo($listTable.closest('.datatables-header-footer-wrapper').find('.pagination-wrapper'));
+
+                        $listTable.closest('.datatables-header-footer-wrapper').find('.pagination').addClass('pagination-modern pagination-modern-spacing justify-content-center');
+
+                    }
+                });
+
+                $(document).on('change', '.results-per-page', function () {
+                    var $this = $(this),
+                        $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+                    $dataTable.page.len($this.val()).draw();
+                });
+
+                $(document).on('keyup', '.search-term', function () {
+                    var $this = $(this),
+                        $filterBy = $this.closest('.datatables-header-footer-wrapper').find('.filter-by'),
+                        $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+                    if ($filterBy.val() == 'all') {
+                        $dataTable.search($this.val()).draw();
+                    } else {
+                        $dataTable.column(parseInt($filterBy.val())).search($this.val()).draw();
+                    }
+                });
+
+                $(document).on('change', '.filter-by', function () {
+                    var $this = $(this),
+                        $searchField = $this.closest('.datatables-header-footer-wrapper').find('.search-term');
+
+                    $searchField.trigger('keyup');
+                });
+
+                $listTable.find('.select-all').on('change', function () {
+                    if (this.checked) {
+                        $listTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', true);
+                    } else {
+                        $listTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', false);
+                    }
+                })
+
+            };
+
+            listDataTableInit();
+
+        }(jQuery));
+    </script>
+}

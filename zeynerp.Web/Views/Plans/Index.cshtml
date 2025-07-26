@@ -1,0 +1,62 @@
+@model IEnumerable<PlanViewModel>
+@{
+    ViewData["LayoutTitle"] = "Planlar";
+}
+
+<header class="page-header">
+    <h2>@ViewData["LayoutTitle"]</h2>
+
+    <div class="right-wrapper text-end">
+        <ol class="breadcrumbs me-3">
+            <li>
+                <a asp-controller="Subscriptions" asp-action="Index">Plan & Abonelik</a>
+            </li>
+
+            <li><span class="text-light">Planlar</span></li>
+
+        </ol>
+    </div>
+</header>
+
+<div class="row">
+    @foreach (var plan in Model)
+    {
+        <div class="col-lg-3 col-sm-6 mb-5">
+            <div class="pricing-card p-4 border bg-light">
+                <h5 class="fw-bold fs-4 text-start text-dark">@plan.Name</h5>
+                <h2 class="fw-bold text-start text-dark">@plan.PlanPricings.LastOrDefault()?.Price.ToString("C")
+                    <span class="fs-6">/ aylık</span>
+                </h2>
+                <a href="@Url.Action("Create", "Subscriptions", new { planId = plan.Id })" class="btn btn-dark w-100 my-3">Abone
+                    Ol</a>
+                <ul class="list-unstyled text-center">
+                    <li class="py-1">✔ Stok Yönetimi</li>
+                    <li class="py-1">✔ Personel Yönetimi</li>
+                    <li class="py-1">✔ 1,000 Subscribers</li>
+                    <li class="py-1">✔ 10 Team Members</li>
+                    <li class="py-1">✔ 10 Metrics</li>
+                    <li class="py-1">✔ Email/SMS/Webhook Notifications</li>
+                    <li class="py-1">✔ Custom CSS</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+@section Styles {
+    <style>
+        .card-header {
+            cursor: pointer;
+        }
+
+        .pricing-card {
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+}

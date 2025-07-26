@@ -1,0 +1,204 @@
+@{
+    ViewData["LayoutTitle"] = "Cariler";
+}
+
+<header class="page-header">
+    <h2>@ViewData["LayoutTitle"]</h2>
+
+    <div class="right-wrapper text-end">
+        <ol class="breadcrumbs me-3">
+            <li>
+                <a asp-controller="Tanimlamalar" asp-action="Index"><span>Tanımlamalar</span></a>
+            </li>
+
+            <li>
+                <a asp-controller="MuhasebeTanimlamalar" asp-action="Index"><span>Muhasebe Tanımlamalar</span></a>
+            </li>
+
+            <li><span class="text-light">Cari Tanımlar</span></li>
+        </ol>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-modern">
+            <div class="card-body">
+                <div class="datatables-header-footer-wrapper">
+                    <div class="datatable-header">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                                <a asp-action="Create"
+                                    class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Cari
+                                    Oluştur</a>
+                            </div>
+                            <div class="col-8 col-lg-auto ms-auto ml-auto mb-3 mb-lg-0">
+                                <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+                                    <label class="ws-nowrap me-3 mb-0"></label>
+                                    <select class="form-control select-style-1 filter-by" name="filter-by">
+                                        <option value="all" selected>All</option>
+                                        <option value="1">ID</option>
+                                        <option value="2">Name</option>
+                                        <option value="3">Phone</option>
+                                        <option value="4">E-mail</option>
+                                        <option value="5">Orders</option>
+                                        <option value="6">Total Amount</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4 col-lg-auto ps-lg-1 mb-3 mb-lg-0">
+                                <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+                                    <label class="ws-nowrap me-3 mb-0"></label>
+                                    <select class="form-control select-style-1 results-per-page"
+                                        name="results-per-page">
+                                        <option value="12" selected>12</option>
+                                        <option value="24">24</option>
+                                        <option value="36">36</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-auto ps-lg-1">
+                                <div class="search search-style-1 search-style-1-lg mx-lg-auto">
+                                    <div class="input-group">
+                                        <input type="text" class="search-term form-control" name="search-term"
+                                            id="search-term" placeholder="Cari Ara">
+                                        <button class="btn btn-default" type="submit"><i
+                                                class="bx bx-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-list"
+                        style="min-width: 1200px;">
+                        <thead>
+                            <tr>
+                                <th>Kısa Adı</th>
+                                <th>Adı</th>
+                                <th>Türler</th>
+                                <th width="15%">Telefon</th>
+                                <th width="20%">E-Posta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section VendorStyles {
+    <link rel="stylesheet" href="~/vendor/datatables/media/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="~/vendor/pnotify/pnotify.custom.css" />
+}
+
+@section VendorScripts {
+    <script src="~/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/media/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/vendor/pnotify/pnotify.custom.js"></script>
+}
+
+@section Scripts {
+    <script>
+        (function ($) {
+
+            'use strict';
+
+            var listDataTableInit = function () {
+
+                var $listTable = $('#datatable-list');
+
+                $listTable.dataTable({
+                    dom: '<"row justify-content-between"<"col-auto"><"col-auto">><"table-responsive"t>',
+                    pageLength: 12,
+                    order: [],
+                    language: {
+                        emptyTable: "Tabloda gösterilecek veri bulunmamaktadır.",
+                        paginate: {
+                            previous: '<i class="fas fa-chevron-left"></i>',
+                            next: '<i class="fas fa-chevron-right"></i>'
+                        }
+                    },
+                    drawCallback: function () {
+
+                        $listTable
+                            .closest('.dataTables_wrapper')
+                            .find('.dataTables_info')
+                            .appendTo($listTable.closest('.datatables-header-footer-wrapper').find('.results-info-wrapper'));
+
+                        $listTable
+                            .closest('.dataTables_wrapper')
+                            .find('.dataTables_paginate')
+                            .appendTo($listTable.closest('.datatables-header-footer-wrapper').find('.pagination-wrapper'));
+
+                        $listTable.closest('.datatables-header-footer-wrapper').find('.pagination').addClass('pagination-modern pagination-modern-spacing justify-content-center');
+
+                    }
+                });
+
+                $(document).on('change', '.results-per-page', function () {
+                    var $this = $(this),
+                        $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+                    $dataTable.page.len($this.val()).draw();
+                });
+
+                $(document).on('keyup', '.search-term', function () {
+                    var $this = $(this),
+                        $filterBy = $this.closest('.datatables-header-footer-wrapper').find('.filter-by'),
+                        $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+                    if ($filterBy.val() == 'all') {
+                        $dataTable.search($this.val()).draw();
+                    } else {
+                        $dataTable.column(parseInt($filterBy.val())).search($this.val()).draw();
+                    }
+                });
+
+                $(document).on('change', '.filter-by', function () {
+                    var $this = $(this),
+                        $searchField = $this.closest('.datatables-header-footer-wrapper').find('.search-term');
+
+                    $searchField.trigger('keyup');
+                });
+
+                $listTable.find('.select-all').on('change', function () {
+                    if (this.checked) {
+                        $listTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', true);
+                    } else {
+                        $listTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', false);
+                    }
+                })
+
+            };
+
+            listDataTableInit();
+
+        }(jQuery));
+    </script>
+
+    <script>
+        var successMessage = @Html.Raw(Json.Serialize(ViewBag.SuccessMessage));
+        if (successMessage.length > 0) {
+            var notice = new PNotify({
+                text: successMessage,
+                type: 'success',
+                addclass: 'click-2-close',
+                hide: true,
+                buttons: {
+                    closer: false,
+                    sticker: false
+                }
+            });
+
+            notice.get().click(function () {
+                notice.remove();
+            });
+        }
+    </script>
+}
