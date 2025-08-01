@@ -39,9 +39,17 @@ namespace zeynerp.Infrastructure.Services.Identity
             if (!result.Succeeded)
                 return Result<bool>.Failure(result.Errors.Select(e => e.Description).ToList());
 
+            var roleResult = await _userManager.AddToRoleAsync(user, "DefinitionsUser");
+            if(!roleResult.Succeeded)
+            {
+                await _userManager.DeleteAsync(user);
+                return Result<bool>.Failure(roleResult.Errors.Select(e => e.Description).ToList());
+            }
+
+
             var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var encodedToken = WebUtility.UrlEncode(emailConfirmationToken);
-            var confirmationLink = $"https://localhost:7240/Authentication/ConfirmEmail?userId={user.Id}&token={encodedToken}";
+            var confirmationLink = $"https://zeynerp.com/Authentication/ConfirmEmail?userId={user.Id}&token={encodedToken}";
 
             var emailSent = await _emailService.SendConfirmationEmailAsync(user.Email, $"{user.FullName}", confirmationLink);
             if (!emailSent)
@@ -107,7 +115,7 @@ namespace zeynerp.Infrastructure.Services.Identity
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = WebUtility.UrlEncode(token);
-            var resetLink = $"https://localhost:7240/sifre-sifirla?userId={user.Id}&token={encodedToken}";
+            var resetLink = $"https://zeynerp.com/sifre-sifirla?userId={user.Id}&token={encodedToken}";
 
 
             var emailSent = await _emailService.SendPasswordResetEmailAsync(user.Email, $"{user.FullName}", resetLink);

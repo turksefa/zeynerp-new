@@ -339,8 +339,7 @@
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a class="nav-link" asp-controller="Users"
-												asp-action="Index">
+											<a class="nav-link" asp-controller="Users" asp-action="Index">
 												Kullanıcılar
 											</a>
 										</li>
@@ -357,12 +356,15 @@
 										<span>Kullanıcı İşlemleri</span>
 									</a>
 								</li> *@
-								<li>
-									<a class="nav-link" asp-controller="Tanimlamalar" asp-action="Index">
-										<i class="bx bx-cog" aria-hidden="true"></i>
-										<span>Tanımlamalar</span>
-									</a>
-								</li>
+								@if (User.IsInRole("DefinitionsUser"))
+								{
+									<li>
+										<a class="nav-link" asp-controller="Tanimlamalar" asp-action="Index">
+											<i class="bx bx-cog" aria-hidden="true"></i>
+											<span>Tanımlamalar</span>
+										</a>
+									</li>
+								}
 								@* <li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="bx bx-package" aria-hidden="true"></i>
@@ -406,7 +408,7 @@
 												asp-action="MalzemeTalepler">
 												Stok Talep Et
 											</a>
-										</li>										
+										</li>
 									</ul>
 								</li>
 								@* <li class="nav-parent">

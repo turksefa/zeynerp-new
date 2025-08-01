@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using zeynerp.Domain.Entities;
 using zeynerp.Domain.Entities.Identity;
 using zeynerp.Domain.Entities.Subscription;
 using zeynerp.Domain.Entities.User;
@@ -15,6 +17,7 @@ namespace zeynerp.Infrastructure.Data.Contexts
         }
 
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<PlanPricing> PlanPricings { get; set; }
         public DbSet<PlanSubscription> PlanSubscriptions { get; set; }
@@ -22,6 +25,15 @@ namespace zeynerp.Infrastructure.Data.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = "1",
+                    Name = "DefinitionsUser",
+                    NormalizedName = "DEFINITIONSUSER"
+                }
+            );
 
             var purchaseId = Guid.NewGuid();
             var marketingId = Guid.NewGuid();

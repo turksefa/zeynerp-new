@@ -2,23 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using zeynerp.Application.Common.Interfaces;
 using zeynerp.Application.Mapper;
-using zeynerp.Application.Services.Tanimlamalar.MuhasebeTanimlamalar;
-using zeynerp.Application.Services.Tanimlamalar.StokTanimlamalar;
 using zeynerp.Domain.Entities.Identity;
-using zeynerp.Domain.Repositories;
-using zeynerp.Domain.Repositories.Tanimlamalar.MuhasebeTanimlamalar;
-using zeynerp.Domain.Repositories.Tanimlamalar.StokTanimlamalar;
 using zeynerp.Infrastructure.Data.Contexts;
-using zeynerp.Infrastructure.Data.Repositories;
-using zeynerp.Infrastructure.Data.Repositories.Tanimlamalar.MuhasebeTanimlamalar;
-using zeynerp.Infrastructure.Data.Repositories.Tanimlamalar.StokTanimlamalar;
 using zeynerp.Infrastructure.Services.Identity;
-using zeynerp.Infrastructure.Services.Email;
-using zeynerp.Infrastructure.Services.MultiTenancy;
 using zeynerp.Web.Mapper;
-using zeynerp.Application.Services.Subscription;
-using zeynerp.Domain.Repositories.Subscription;
-using zeynerp.Infrastructure.Data.Repositories.Subscription;
 using zeynerp.Application.Extensions;
 using zeynerp.Infrastructure.Extensions;
 
@@ -74,11 +61,16 @@ builder.Services.AddAuthentication().AddGoogle(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/Account/Logout";
+    options.LoginPath = "/Authentication/Login";
+    options.LogoutPath = "/Authentication/Logout";
     // options.AccessDeniedPath = "/Account/AccessDenied";
     // options.SlidingExpiration = true;
     // options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Definitions.Access", policy => policy.RequireRole("DefinitionsUser"));
 });
 
 var app = builder.Build();

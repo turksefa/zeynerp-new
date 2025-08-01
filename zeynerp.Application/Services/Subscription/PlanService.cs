@@ -18,7 +18,7 @@ namespace zeynerp.Application.Services.Subscription
 
         public async Task<IEnumerable<PlanDto>> GetPlansAsync() => _mapper.Map<IEnumerable<PlanDto>>(await _applicationUnitOfWork.PlanRepository.GetAllAsync());
 
-        public async Task<Result<bool>> PlanExistsAsync(Guid planId)
+        public async Task<Result<bool>> PlanExistsAsync(int planId)
         {
             var exists = await _applicationUnitOfWork.PlanRepository.FirstOrDefaultAsync(p => p.Id == planId) != null;
             return Result<bool>.Success(exists);

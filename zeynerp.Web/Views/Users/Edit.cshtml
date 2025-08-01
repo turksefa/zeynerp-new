@@ -1,0 +1,103 @@
+@{
+    ViewData["LayoutTitle"] = "Yetkilendirme";
+}
+
+<header class="page-header">
+    <h2>@ViewData["LayoutTitle"]</h2>
+</header>
+
+<form class="ecommerce-form action-buttons-fixed" action="">
+    <div class="row">
+        <div class="col">
+            <section class="card card-modern">
+                <header class="card-header">
+                    <div class="card-actions">
+                        <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                    </div>
+
+                    <h2 class="card-title">Sefa Türk</h2>
+                </header>
+                <div class="card-body">
+                    <div id="treeCheckbox">
+                        <ul>
+                            <li>
+                                Kullanıcı İşlemleri
+                                <ul>
+                                    <li>
+                                        <a href="#">Kullanıcılar</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Plan & Abonelik</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="colored-icon">
+                                Tanımlamalar
+                                <ul>
+                                    <li>
+                                        <a href="#">Genel Tanımlamalar</a>
+                                    </li>
+                                    <li>
+                                        Muhasebe Tanımlamalar
+                                        <ul>
+                                            <li>
+                                                <a href="#">cari onaylama</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Stok Tanımlamalar</a>
+                                    </li>
+                                    @* <li data-jstree='{ "icon" : "far fa-file-image" }'>
+                            Custom Icon
+                        </li>
+                        <li data-jstree='{ "icon" : "img/icon.png" }'>
+                            Custom Icon Image
+                        </li> *@
+                                </ul>
+                            </li>
+                            @* <li class="colored-icon">
+                    Colored Icon Only
+                </li>
+                <li class="folder">
+                    Folder Style
+                </li> *@
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row action-buttons">
+        <div class="col-12 col-md-auto">
+            @* <button id="addToTable"
+                class="btn btn-default btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
+                <i class="fas fa-plus me-2"></i> Satır Ekle
+            </button> *@
+        </div>
+        <div class="col-12 col-md-auto order-lg-1 mt-3 mt-md-0">
+            <button type="button"
+                class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1"
+                data-loading-text="Loading...">
+                <i class="bx bx-save text-4 me-2"></i> Kaydet
+            </button>
+        </div>
+        <div class="col-12 col-md-auto ms-lg-auto px-md-0 mt-3 mt-md-0">
+            <a asp-action="Index"
+                class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">İptal</a>
+        </div>
+    </div>
+</form>
+
+@section VendorStyles {
+    <link rel="stylesheet" href="~/vendor/jstree/themes/default/style.css" />
+}
+
+@section VendorScripts {
+    <script src="~/vendor/jstree/jstree.js"></script>
+}
+
+@section Scripts {
+    <script src="~/js/examples/examples.treeview.js"></script>
+}

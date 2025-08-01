@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using zeynerp.Application.Services;
 using zeynerp.Application.Services.Subscription;
 using zeynerp.Application.Services.Tanimlamalar.MuhasebeTanimlamalar;
 using zeynerp.Application.Services.Tanimlamalar.StokTanimlamalar;
@@ -9,6 +10,8 @@ namespace zeynerp.Application.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IPlanSubscriptionService, PlanSubscriptionService>();
 

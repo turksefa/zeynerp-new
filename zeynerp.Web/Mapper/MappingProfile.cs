@@ -25,7 +25,7 @@ namespace zeynerp.Web.Mapper
             CreateMap<PlanDto, PlanViewModel>();
             CreateMap<PlanPricingDto, PlanPricingViewModel>();
             CreateMap<PlanSubscriptionViewModel, PlanSubscriptionDto>().ReverseMap();
-            CreateMap<InvitationViewModel, InvitationDto>();
+            CreateMap<InvitationViewModel, InvitationDto>().ReverseMap();
         }
     }
 }

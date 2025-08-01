@@ -6,6 +6,6 @@ namespace zeynerp.Application.Services.Subscription
     public interface IPlanService
     {
         Task<IEnumerable<PlanDto>> GetPlansAsync();
-        Task<Result<bool>> PlanExistsAsync(Guid planId);
+        Task<Result<bool>> PlanExistsAsync(int planId);
     }
 }

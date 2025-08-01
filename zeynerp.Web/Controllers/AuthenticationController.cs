@@ -1,10 +1,13 @@
 using System.Security.Claims;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using zeynerp.Application.Common.Interfaces;
+using zeynerp.Application.DTOs;
 using zeynerp.Application.DTOs.Authentication;
 using zeynerp.Domain.Entities.Identity;
+using zeynerp.Web.Models;
 using zeynerp.Web.Models.Authentication;
 
 namespace zeynerp.Web.Controllers
@@ -16,18 +19,21 @@ namespace zeynerp.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITenantService _tenantService;
+        private readonly IInvitationService _invitationService;
 
         public AuthenticationController(IAuthenticationService authenticationService,
             IMapper mapper,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ITenantService tenantService)
+            ITenantService tenantService,
+            IInvitationService invitationService)
         {
             _authenticationService = authenticationService;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _tenantService = tenantService;
+            _invitationService = invitationService;
         }
 
         [Route("kayit-ol")]
@@ -274,6 +280,37 @@ namespace zeynerp.Web.Controllers
         {
             await _authenticationService.LogoutAsync();
             return RedirectToAction("Login");
+        }
+
+        [Route("davet-kabul")]
+        public async Task<IActionResult> AcceptInvitation([FromQuery] Guid invitationId)
+        {
+            if (invitationId == Guid.Empty)
+            {
+                ModelState.AddModelError("", "Geçersiz davet bağlantısı.");
+                return View("Login");
+            }
+            
+            return View(_mapper.Map<InvitationViewModel>(await _invitationService.GetInvitationByIdAsync(invitationId)));
+        }
+
+        [HttpPost]
+        [Route("davet-kabul")]
+        public async Task<IActionResult> AcceptInvitation(InvitationViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var result = await _invitationService.AcceptInvitationAsync(_mapper.Map<InvitationDto>(model));
+            if(result.IsSuccess)
+            {
+                TempData["SuccessMessage"] = "Davet başarıyla kabul edildi. Giriş yapabilirsiniz.";
+                return RedirectToAction("Login");
+            }
+
+            ModelState.AddModelError(string.Empty, result.ErrorMessage);
+            
+            return View();
         }
     }
 }

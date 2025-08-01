@@ -5,7 +5,7 @@ namespace zeynerp.Domain.Entities.Subscription
 {
     public class PlanPricing : BaseEntity
     {
-        public Guid PlanId { get; set; }
+        public int PlanId { get; set; }
         public SubscriptionPeriod Period { get; set; } // Aylık/Yıllık
         public decimal Price { get; set; }
         public decimal? DiscountPercentage { get; set; } // Yıllık için indirim

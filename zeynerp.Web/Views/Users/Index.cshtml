@@ -30,8 +30,8 @@
                                                     <div class="input-group">
                                                         <div class="form-floating">
                                                             <input type="email" class="form-control form-control-md"
-                                                                id="floatingInputGroupEmail" asp-for="Email" placeholder="E-Posta"
-                                                                required>
+                                                                id="floatingInputGroupEmail" asp-for="Email"
+                                                                placeholder="E-Posta" required>
                                                             <label for="floatingInputGroupEmail">E-Posta</label>
                                                         </div>
                                                         <span class="input-group-text"><i
@@ -92,25 +92,40 @@
 
                         <thead>
                             <tr>
-                                <th width="25%">Kullanıcı</th>
+                                <th width="25%">Ad Soyad</th>
                                 <th width="25%">E-Posta</th>
                                 <th width="60%">Yetkiler</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @* @foreach (var user in Model.Users)
+                            @if (Model.Users != null && Model.Users.Any())
                             {
-                                <tr>
-                                    <td><a href="#"><strong>@user.FullName</strong></a></td>
-                                    <td>@user.Email</td>
-                                    <td class="d-flex justify-content-between">
-                                        <p class="m-0"><span class="badge text-bg-primary me-1">Stok Yönetimi</span><span
-                                                class="badge text-bg-danger">Tedarik Yönetimi</span></p>
-                                        <span class="ecommerce-status completed"></span>
-                                    </td>
-                                </tr>
+                                foreach (var user in Model.Users)
+                                {
+                                    if (user.EmailConfirmed == false)
+                                    {
+                                        <tr>
+                                            <td><a asp-action="Edit"><strong>@user.FullName</strong></a></td>
+                                            <td>@user.Email</td>
+                                            <td align="right"><span class="badge text-bg-warning">Bekleniyor</span></td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td><a asp-action="Edit"><strong>@user.FullName</strong></a></td>
+                                            <td>@user.Email</td>
+                                            <td class="d-flex justify-content-between">
+                                                <p class="m-0"><span class="badge text-bg-primary me-1">Stok Yönetimi</span><span
+                                                        class="badge text-bg-danger">Tedarik Yönetimi</span></p>
+                                                <span class="ecommerce-status completed"></span>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                             }
-                            @foreach (var invitationDto in Model.InvitationDtos)
+
+                            @* @foreach (var invitationDto in Model.InvitationDtos)
                             {
                                 <tr>
                                     <td></td>

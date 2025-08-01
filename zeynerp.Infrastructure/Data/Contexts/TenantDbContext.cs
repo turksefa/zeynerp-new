@@ -12,8 +12,7 @@ namespace zeynerp.Infrastructure.Data.Contexts
         {
 
         }
-
-        public DbSet<Invitation> Invitations { get; set; }
+                
         public DbSet<StokGrupTanim> StokGrupTanimlar { get; set; }
         public DbSet<CariTanim> CariTanimlar { get; set; }
         public DbSet<CariTurTanim> CariTurTanimlar { get; set; }

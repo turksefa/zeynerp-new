@@ -5,7 +5,7 @@ using zeynerp.Infrastructure.Data.Contexts;
 
 namespace zeynerp.Infrastructure.Data.Repositories
 {
-    public class ApplicationRepository<T> : IRepository<T> where T : class
+    public class ApplicationRepository<T> : IApplicationRepository<T> where T : class
     {
         protected readonly ApplicationDbContext _applicationDbContext;
         protected readonly DbSet<T> _dbSet;

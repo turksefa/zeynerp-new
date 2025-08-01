@@ -26,7 +26,10 @@ namespace zeynerp.Infrastructure.Extensions
             services.AddScoped<IApplicationUnitOfWork, ApplicationUnitOfWork>();
             services.AddScoped<IInvitationService, InvitationService>();
 
+            services.AddScoped<IUserRepository, UserRepository>();
+            
             services.AddScoped<IInvitationRepository, InvitationRepository>();
+            services.AddScoped<ITenantRepository, TenantRepository>();
 
             services.AddScoped<IPlanRepository, PlanRepository>();
             services.AddScoped<IPlanSubscriptionRepository, PlanSubscriptionRepository>();

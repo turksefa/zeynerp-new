@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace zeynerp.Web.Controllers.Tanimlamalar
 {
-    [Authorize]
+    [Authorize(Policy = "Definitions.Access")]
     public class TanimlamalarController : Controller
     {
         public IActionResult Index()

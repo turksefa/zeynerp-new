@@ -12,7 +12,7 @@ namespace zeynerp.Infrastructure.Data.Repositories.Subscription
         {
         }
 
-        public async Task<PlanPricing?> GetLatestPlanPricingByDateAsync(Guid planId) =>
+        public async Task<PlanPricing?> GetLatestPlanPricingByDateAsync(int planId) =>
             await _dbSet.Where(pp => pp.PlanId == planId).OrderBy(pp => pp.CreatedDate).LastOrDefaultAsync();
     }
 }
